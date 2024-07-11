@@ -5,19 +5,24 @@ import 'package:test/test.dart';
 
 void main() {
   test('toJson creates expected json map', () {
-    final message = ArrivalMessage('some_id');
+    final message =
+        ArrivalMessage(NetworkUser(id: 'some_id', displayName: 'name'));
 
     JsonMap json = message.toJson();
 
     expect(json['type'], ArrivalMessage.jsonType);
-    expect(json['userId'], 'some_id');
+    expect(json['user'], isA<JsonMap>());
+    expect((json['user'] as JsonMap)['id'], 'some_id');
+    expect((json['user'] as JsonMap)['displayName'], 'name');
   });
 
   test('fromJson works on valid json', () {
-    final jsonString = '''{"type":"arrival","userId":"some_id"}''';
+    final jsonString =
+        '''{"type":"arrival","user":{"id":"some_id","displayName":"name"}}''';
     final json = jsonDecode(jsonString);
     final message = ArrivalMessage.fromJson(json);
 
-    expect(message.userId, 'some_id');
+    expect(message.user.id, 'some_id');
+    expect(message.user.displayName, 'name');
   });
 }

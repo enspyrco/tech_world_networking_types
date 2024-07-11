@@ -1,7 +1,7 @@
 name: tech_world_networking_types
 description: Types for objects sent over the network in tech_world.
 version: 0.0.0+1
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/enspyrco/tech_world_networking_types
 
 environment:
   sdk: ^3.0.0
