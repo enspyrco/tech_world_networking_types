@@ -21,4 +21,10 @@ class NetworkUser implements User {
         'id': id,
         'displayName': displayName,
       };
+
+  @override
+  bool operator ==(Object other) => other is User && other.id == id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
