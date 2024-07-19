@@ -2,18 +2,18 @@ import 'package:tech_world_networking_types/tech_world_networking_types.dart';
 
 /// The set of ids that constitutes 'other players', ie. all present player ids
 /// except for the player that the list is being sent to.
-class OtherPlayersMessage implements ServerMessage {
-  OtherPlayersMessage({required this.users});
+class OtherUsersMessage implements ServerMessage {
+  OtherUsersMessage({required this.users});
   static const String jsonType = 'other_players';
   final Set<NetworkUser> users;
 
-  factory OtherPlayersMessage.fromJson(JsonMap json) {
+  factory OtherUsersMessage.fromJson(JsonMap json) {
     return switch (json) {
       {
-        'type': OtherPlayersMessage.jsonType,
+        'type': OtherUsersMessage.jsonType,
         'users': List<Object?> jsonUsers,
       } =>
-        OtherPlayersMessage(users: {
+        OtherUsersMessage(users: {
           for (final jsonUser in jsonUsers)
             NetworkUser.fromJson(jsonUser as JsonMap)
         }),
@@ -23,7 +23,7 @@ class OtherPlayersMessage implements ServerMessage {
 
   @override
   JsonMap toJson() => {
-        'type': OtherPlayersMessage.jsonType,
+        'type': OtherUsersMessage.jsonType,
         'users': [for (final user in users) user.toJson()]
       };
 }

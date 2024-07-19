@@ -1,5 +1,5 @@
 export 'src/messages/movement/player_path_message.dart';
-export 'src/messages/presence/other_players_message.dart';
+export 'src/messages/presence/other_users_message.dart';
 export 'src/messages/presence/arrival_message.dart';
 export 'src/messages/presence/departure_message.dart';
 export 'src/types/game_server_message.dart';
