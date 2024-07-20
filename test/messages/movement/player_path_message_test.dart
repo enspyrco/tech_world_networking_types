@@ -6,7 +6,10 @@ import 'package:test/test.dart';
 void main() {
   test('toJson creates expected json map', () {
     final message = PlayerPathMessage(
-        points: [Double2(x: 1, y: 2), Double2(x: 2, y: 2)], userId: 'some_id');
+      points: [Double2(x: 1, y: 2), Double2(x: 2, y: 2)],
+      userId: 'some_id',
+      directions: ['left', 'right'],
+    );
 
     final Map<String, Object?> json = message.toJson();
 
@@ -18,11 +21,12 @@ void main() {
       {'x': 1, 'y': 2},
       {'x': 2, 'y': 2}
     ]);
+    expect(json['directions'], ['left', 'right']);
   });
 
   test('fromJson reads valid json', () {
     final String jsonString = '''
-    {"type":"player_path","userId":"some_id","points":[{"x":1.0,"y":2.0},{"x":2.0,"y":2.0}]}
+    {"type":"player_path","userId":"some_id","points":[{"x":1.0,"y":2.0},{"x":2.0,"y":2.0}],"directions":["left","right"]}
     ''';
 
     final Map<String, Object?> json = jsonDecode(jsonString);
@@ -34,5 +38,7 @@ void main() {
     expect(message.points.first.y, 2);
     expect(message.points.last.x, 2);
     expect(message.points.last.y, 2);
+    expect(message.directions.first, 'left');
+    expect(message.directions.last, 'right');
   });
 }
