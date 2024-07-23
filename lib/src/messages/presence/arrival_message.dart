@@ -14,7 +14,7 @@ class ArrivalMessage implements ServerMessage {
         'user': Map<String, Object?> userJson,
       } =>
         ArrivalMessage(NetworkUser.fromJson(userJson)),
-      _ => throw const FormatException('Unexpected JSON format'),
+      _ => throw FormatException('Unexpected JSON format\n\n$json'),
     };
   }
 

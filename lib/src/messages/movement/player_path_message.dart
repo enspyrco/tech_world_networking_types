@@ -25,7 +25,7 @@ class PlayerPathMessage implements ServerMessage {
         directions: List<String>.from(directionsJson),
       );
     } else {
-      throw const FormatException('Unexpected JSON format');
+      throw FormatException('Unexpected JSON format\n\n$json');
     }
   }
 

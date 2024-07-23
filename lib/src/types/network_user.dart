@@ -14,7 +14,7 @@ class NetworkUser implements User {
         'displayName': String displayName,
       } =>
         NetworkUser(id: id, displayName: displayName),
-      _ => throw const FormatException('Unexpected JSON format'),
+      _ => throw FormatException('Unexpected JSON format\n\n$json'),
     };
   }
   JsonMap toJson() => {

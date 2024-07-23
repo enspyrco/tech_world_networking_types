@@ -11,7 +11,7 @@ class Double2 {
   factory Double2.fromJson(Map<String, Object?> json) {
     return switch (json) {
       {'x': num x, 'y': num y} => Double2(x: x.toDouble(), y: y.toDouble()),
-      _ => throw const FormatException('Unexpected JSON format'),
+      _ => throw FormatException('Unexpected JSON format\n\n$json'),
     };
   }
 

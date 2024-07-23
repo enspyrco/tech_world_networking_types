@@ -17,7 +17,7 @@ class OtherUsersMessage implements ServerMessage {
           for (final jsonUser in jsonUsers)
             NetworkUser.fromJson(jsonUser as JsonMap)
         }),
-      _ => throw const FormatException('Unexpected JSON format'),
+      _ => throw FormatException('Unexpected JSON format\n\n$json'),
     };
   }
 
