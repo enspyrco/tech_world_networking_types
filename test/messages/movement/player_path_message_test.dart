@@ -8,6 +8,7 @@ void main() {
     final message = PlayerPathMessage(
       points: [Double2(x: 1, y: 2), Double2(x: 2, y: 2)],
       userId: 'some_id',
+      roomId: 'l_room',
       directions: ['left', 'right'],
     );
 
@@ -17,6 +18,7 @@ void main() {
 
     expect(json['type'], PlayerPathMessage.jsonType);
     expect(json['userId'], 'some_id');
+    expect(json['roomId'], 'l_room');
     expect(json['points'], [
       {'x': 1, 'y': 2},
       {'x': 2, 'y': 2}
@@ -26,7 +28,7 @@ void main() {
 
   test('fromJson reads valid json', () {
     final String jsonString = '''
-    {"type":"player_path","userId":"some_id","points":[{"x":1.0,"y":2.0},{"x":2.0,"y":2.0}],"directions":["left","right"]}
+    {"type":"player_path","userId":"some_id","roomId":"l_room","points":[{"x":1.0,"y":2.0},{"x":2.0,"y":2.0}],"directions":["left","right"]}
     ''';
 
     final Map<String, Object?> json = jsonDecode(jsonString);
@@ -34,6 +36,7 @@ void main() {
     final message = PlayerPathMessage.fromJson(json);
 
     expect(message.userId, 'some_id');
+    expect(message.roomId, 'l_room');
     expect(message.points.first.x, 1);
     expect(message.points.first.y, 2);
     expect(message.points.last.x, 2);
