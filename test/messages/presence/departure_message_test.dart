@@ -14,7 +14,7 @@ void main() {
   });
 
   test('fromJson works on valid json', () {
-    final jsonString = '''{"type":"Departure","userId":"some_id"}''';
+    final jsonString = '''{"type":"departure","userId":"some_id"}''';
     final json = jsonDecode(jsonString);
     final message = DepartureMessage.fromJson(json);
 
